@@ -13,6 +13,7 @@ app.use(cors({
         "http://localhost:5173",
         "http://localhost:5000",
         "https://visiting-card-app-server.vercel.app",
+        "https://visiting-card-app.vercel.app"
     ],
     credentials: true,
 }));
