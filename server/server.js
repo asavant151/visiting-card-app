@@ -8,7 +8,14 @@ connectDB();
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: [
+        "http://localhost:5173",
+        "http://localhost:5000",
+        "https://visiting-card-app-server.vercel.app",
+    ],
+    credentials: true,
+}));
 app.use(express.json());
 
 // Routes
@@ -16,6 +23,10 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/card', require('./routes/card'));
 app.use('/api/ocr', require('./routes/ocr'));
 app.use('/api/admin', require('./routes/admin'));
+
+app.get("/", (req, res) => {
+    res.send("Server is Live!");
+});
 
 // Upload routes (for general image uploads like logo)
 app.post('/api/upload', require('./middleware/upload').single('image'), async (req, res) => {
