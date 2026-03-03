@@ -15,9 +15,9 @@ const AdminDashboard = () => {
     const fetchData = async () => {
         try {
             const [usersRes, cardsRes, analyticsRes] = await Promise.all([
-                axios.get('http://localhost:5000/api/admin/users', { headers: { Authorization: `Bearer ${user.token}` } }),
-                axios.get('http://localhost:5000/api/admin/cards', { headers: { Authorization: `Bearer ${user.token}` } }),
-                axios.get('http://localhost:5000/api/admin/analytics', { headers: { Authorization: `Bearer ${user.token}` } })
+                axios.get('https://visiting-card-app-server.vercel.app/api/admin/users', { headers: { Authorization: `Bearer ${user.token}` } }),
+                axios.get('https://visiting-card-app-server.vercel.app/api/admin/cards', { headers: { Authorization: `Bearer ${user.token}` } }),
+                axios.get('https://visiting-card-app-server.vercel.app/api/admin/analytics', { headers: { Authorization: `Bearer ${user.token}` } })
             ]);
             setUsers(usersRes.data);
             setCards(cardsRes.data);
@@ -36,7 +36,7 @@ const AdminDashboard = () => {
     const deleteUser = async (id) => {
         if (!window.confirm('Are you sure you want to delete this user?')) return;
         try {
-            await axios.delete(`http://localhost:5000/api/admin/user/${id}`, {
+            await axios.delete(`https://visiting-card-app-server.vercel.app/api/admin/user/${id}`, {
                 headers: { Authorization: `Bearer ${user.token}` }
             });
             setUsers(users.filter(u => u._id !== id));
@@ -50,7 +50,7 @@ const AdminDashboard = () => {
     const deleteCard = async (id) => {
         if (!window.confirm('Delete this card?')) return;
         try {
-            await axios.delete(`http://localhost:5000/api/admin/card/${id}`, {
+            await axios.delete(`https://visiting-card-app-server.vercel.app/api/admin/card/${id}`, {
                 headers: { Authorization: `Bearer ${user.token}` }
             });
             setCards(cards.filter(c => c._id !== id));

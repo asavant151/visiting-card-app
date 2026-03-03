@@ -28,7 +28,7 @@ const UploadCard = () => {
             if (frontImage) {
                 const formData = new FormData();
                 formData.append('image', frontImage);
-                const res = await axios.post('http://localhost:5000/api/ocr/extract', formData, {
+                const res = await axios.post('https://visiting-card-app-server.vercel.app/api/ocr/extract', formData, {
                     headers: { Authorization: `Bearer ${user.token}`, 'Content-Type': 'multipart/form-data' }
                 });
                 combinedData = { ...combinedData, ...res.data.extractedData };
@@ -38,7 +38,7 @@ const UploadCard = () => {
             if (backImage) {
                 const formData = new FormData();
                 formData.append('image', backImage);
-                const res = await axios.post('http://localhost:5000/api/ocr/extract', formData, {
+                const res = await axios.post('https://visiting-card-app-server.vercel.app/api/ocr/extract', formData, {
                     headers: { Authorization: `Bearer ${user.token}`, 'Content-Type': 'multipart/form-data' }
                 });
                 // Merge without overwriting truthy values unnecessarily, or just merge

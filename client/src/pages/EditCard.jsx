@@ -49,7 +49,7 @@ const EditCard = () => {
             const fetchCard = async () => {
                 setFetching(true);
                 try {
-                    const res = await axios.get(`http://localhost:5000/api/card/${id}`, {
+                    const res = await axios.get(`https://visiting-card-app-server.vercel.app/api/card/${id}`, {
                         headers: { Authorization: `Bearer ${user.token}` }
                     });
                     setFormData(prev => ({ ...prev, ...res.data, customLayout: res.data.customLayout || prev.customLayout }));
@@ -94,13 +94,13 @@ const EditCard = () => {
         setLoading(true);
         try {
             if (id) {
-                await axios.put(`http://localhost:5000/api/card/${id}`, formData, {
+                await axios.put(`https://visiting-card-app-server.vercel.app/api/card/${id}`, formData, {
                     headers: { Authorization: `Bearer ${user.token}` }
                 });
                 toast.success('Card updated successfully!');
                 navigate(`/preview/${id}`);
             } else {
-                const res = await axios.post(`http://localhost:5000/api/card/create`, formData, {
+                const res = await axios.post(`https://visiting-card-app-server.vercel.app/api/card/create`, formData, {
                     headers: { Authorization: `Bearer ${user.token}` }
                 });
                 toast.success('Card created successfully!');

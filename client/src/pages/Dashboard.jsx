@@ -13,7 +13,7 @@ const Dashboard = () => {
 
     const fetchCards = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/api/card/my-cards', {
+            const res = await axios.get('https://visiting-card-app-server.vercel.app/api/card/my-cards', {
                 headers: { Authorization: `Bearer ${user.token}` }
             });
             setCards(res.data);
@@ -31,7 +31,7 @@ const Dashboard = () => {
     const handleDelete = async (id) => {
         if (!window.confirm('Delete this card?')) return;
         try {
-            await axios.delete(`http://localhost:5000/api/card/${id}`, {
+            await axios.delete(`https://visiting-card-app-server.vercel.app/api/card/${id}`, {
                 headers: { Authorization: `Bearer ${user.token}` }
             });
             toast.success('Card deleted');

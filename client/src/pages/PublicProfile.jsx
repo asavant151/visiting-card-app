@@ -13,7 +13,7 @@ const PublicProfile = () => {
     useEffect(() => {
         const fetchCard = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/api/card/public/${slug}`);
+                const res = await axios.get(`https://visiting-card-app-server.vercel.app/api/card/public/${slug}`);
                 setCard(res.data);
 
                 // Update SEO Meta Tags
@@ -21,7 +21,7 @@ const PublicProfile = () => {
                 updateMeta('description', `Digital Visiting Card for ${res.data.name}, ${res.data.designation} at ${res.data.company}`);
 
                 // Track View Analytics
-                await axios.post(`http://localhost:5000/api/card/${res.data._id}/analytics`, { eventType: 'view', device: getDeviceType() });
+                await axios.post(`https://visiting-card-app-server.vercel.app/api/card/${res.data._id}/analytics`, { eventType: 'view', device: getDeviceType() });
             } catch (err) {
                 setError('Card not found or is private.');
             } finally {
@@ -51,7 +51,7 @@ const PublicProfile = () => {
     const trackEvent = async (eventType) => {
         if (!card) return;
         try {
-            await axios.post(`http://localhost:5000/api/card/${card._id}/analytics`, { eventType, device: getDeviceType() });
+            await axios.post(`https://visiting-card-app-server.vercel.app/api/card/${card._id}/analytics`, { eventType, device: getDeviceType() });
         } catch (e) {
             // silent fail
         }

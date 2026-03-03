@@ -19,7 +19,7 @@ const PreviewCard = () => {
     useEffect(() => {
         const fetchCard = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/api/card/${id}`, {
+                const res = await axios.get(`https://visiting-card-app-server.vercel.app/api/card/${id}`, {
                     headers: { Authorization: `Bearer ${user.token}` }
                 });
                 setCard(res.data);
@@ -34,7 +34,7 @@ const PreviewCard = () => {
     const trackEvent = async (eventType) => {
         if (!card) return;
         try {
-            await axios.post(`http://localhost:5000/api/card/${card._id}/analytics`, { eventType, device: 'Desktop' });
+            await axios.post(`https://visiting-card-app-server.vercel.app/api/card/${card._id}/analytics`, { eventType, device: 'Desktop' });
         } catch (e) { }
     };
 
