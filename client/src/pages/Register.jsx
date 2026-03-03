@@ -52,7 +52,7 @@ const Register = () => {
                     <div className="flex gap-4">
                         <label className={`flex items-center gap-2 cursor-pointer p-3 border rounded-xl flex-1 transition ${role === 'user' ? 'bg-indigo-50 border-indigo-400 shadow-sm' : 'bg-white hover:bg-slate-50'}`}>
                             <input type="radio" name="role" value="user" checked={role === 'user'} onChange={(e) => setRole(e.target.value)} className="w-4 h-4 text-indigo-600" />
-                            <span className="font-bold text-slate-700 text-sm">Standard</span>
+                            <span className="font-bold text-slate-700 text-sm">User</span>
                         </label>
                         <label className={`flex items-center gap-2 cursor-pointer p-3 border rounded-xl flex-1 transition ${role === 'admin' ? 'bg-indigo-50 border-indigo-400 shadow-sm' : 'bg-white hover:bg-slate-50'}`}>
                             <input type="radio" name="role" value="admin" checked={role === 'admin'} onChange={(e) => setRole(e.target.value)} className="w-4 h-4 text-indigo-600" />
